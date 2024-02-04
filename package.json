@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Daenges/BetterDiscordWebtorrent.git"
+    "url": "git+https://github.com/Daenges/DiscordWebtorrent.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Daenges/BetterDiscordWebtorrent/issues"
+    "url": "https://github.com/Daenges/DiscordWebTorrent/issues"
   },
-  "homepage": "https://github.com/Daenges/BetterDiscordWebtorrent#readme"
+  "homepage": "https://github.com/Daenges/DiscordWebTorrent#readme"
 }
