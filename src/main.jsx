@@ -24,7 +24,7 @@ const plugin = class MyPlugin {
     }
 
     getSettingsPanel() {
-      const mainDiv = <button type="button" class="bg-green-500">Primary</button>
+      const mainDiv = <button type="button" class="dwt-tw-rounded-md dwt-tw-bg-green-500">Primary</button>
       return mainDiv;
     }
 
