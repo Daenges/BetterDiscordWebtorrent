@@ -34,7 +34,7 @@ module.exports = {
     module: {
        rules: [
         {test: /\.css$/, use: "raw-loader"}, 
-        {test: /\.tsx$/, exclude: /node_modules/, use: {loader: 'babel-loader', options: {presets: ['@babel/env', '@babel/preset-react', '@babel/preset-typescript']}}},
+        {test: /\.tsx?$/, exclude: /node_modules/, use: {loader: 'babel-loader', options: {presets: ['@babel/env', '@babel/preset-react', '@babel/preset-typescript']}}},
         {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
       ]
     }
