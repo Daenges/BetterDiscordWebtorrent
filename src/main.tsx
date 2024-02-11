@@ -1,10 +1,13 @@
 import WebTorrent from './webtorrent/webtorrent.min.js'
 import styles from './tailwind/output.css'
-
+import GenerateTable from './table';
+import * as React from 'react';
 
 const plugin = class MyPlugin {
-    constructor(meta) {
-      this.meta = meta;
+    meta: any;
+
+    constructor(pluginMetadata: any) {
+      this.meta = pluginMetadata;
     }
   
     start() {
@@ -19,13 +22,17 @@ const plugin = class MyPlugin {
     }
   
     stop() {
-      BdApi.DOM.removeStyle(this.meta.name, styles);
+      BdApi.DOM.removeStyle(this.meta.name);
       // Cleanup when disabled
     }
 
     getSettingsPanel() {
-      const mainDiv = <button type="button" class="dwt-tw-rounded-md dwt-tw-bg-green-500">Primary</button>
-      return mainDiv;
+      const magnetMap = [
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        [".//fjffdkjldskjl/jjkl.torrent", "/var/bin/help.txt"]
+      ]
+
+      return <GenerateTable magnetToPathMap={magnetMap} />;
     }
 
   };

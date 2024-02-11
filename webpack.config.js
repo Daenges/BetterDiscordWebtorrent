@@ -17,7 +17,8 @@ module.exports = {
     mode: "development",
     target: "node",
     devtool: false,
-    entry: "./src/main.jsx",
+    entry: "./src/main.tsx",
+    devtool: "inline-source-map",
     output: {
       filename: "DiscordWebTorrent.plugin.js",
       path: path.join(__dirname, "dist"),
@@ -26,12 +27,16 @@ module.exports = {
       compareBeforeEmit: false
     },
     resolve: {
-      extensions: [".js", ".css", "jsx"],
+      extensions: [".js", ".css", ".jsx", ".tsx", ".ts"],
     },
     plugins: [
         new webpack.BannerPlugin({raw: true, banner: meta}),
     ],
     module: {
-       rules: [{test: /\.css$/, use: "raw-loader"}, {test: /\.jsx$/, exclude: /node_modules/, use: "babel-loader"}]
+       rules: [
+        {test: /\.css$/, use: "raw-loader"}, 
+        {test: /\.jsx$/, exclude: /node_modules/, use: "babel-loader"},
+        {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
+      ]
     }
   };
