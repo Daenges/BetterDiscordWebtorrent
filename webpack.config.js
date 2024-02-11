@@ -18,7 +18,6 @@ module.exports = {
     target: "node",
     devtool: false,
     entry: "./src/main.tsx",
-    devtool: "inline-source-map",
     output: {
       filename: "DiscordWebTorrent.plugin.js",
       path: path.join(__dirname, "dist"),
@@ -35,7 +34,7 @@ module.exports = {
     module: {
        rules: [
         {test: /\.css$/, use: "raw-loader"}, 
-        {test: /\.jsx$/, exclude: /node_modules/, use: "babel-loader"},
+        {test: /\.tsx$/, exclude: /node_modules/, use: {loader: 'babel-loader', options: {presets: ['@babel/env', '@babel/preset-react', '@babel/preset-typescript']}}},
         {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
       ]
     }

@@ -1,10 +1,13 @@
+/** @jsx BdApi.React.createElement */
+
 import WebTorrent from './webtorrent/webtorrent.min.js'
 import styles from './tailwind/output.css'
 import GenerateTable from './table';
-import * as React from 'react';
+
 
 const plugin = class MyPlugin {
     meta: any;
+    
 
     constructor(pluginMetadata: any) {
       this.meta = pluginMetadata;
