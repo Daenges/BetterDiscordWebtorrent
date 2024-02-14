@@ -31,6 +31,17 @@ const plugin = class MyPlugin {
     getSettingsPanel() {
       const magnetMap = [
         ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
         [".//fjffdkjldskjl/jjkl.torrent", "/var/bin/help.txt"]
       ]
 
