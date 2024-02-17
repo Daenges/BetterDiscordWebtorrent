@@ -29,23 +29,25 @@ const plugin = class MyPlugin {
     }
 
     getSettingsPanel() {
-      const magnetMap = [
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
-        ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
+      const magnetList = [
         ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
         ['.//gamfejklö/jklö.torrent', "C://home/user/moint.md"],
         [".//fjffdkjldskjl/jjkl.torrent", "/var/bin/help.txt"]
       ]
 
-      return <GenerateTable magnetToPathMap={magnetMap} />;
+      const trackerList = [
+        ["https://opentracker.eu"],
+        ["https://new.tracker.net"],
+        ["https://track.me"]
+      ]
+
+      return ( 
+        <div>
+          <GenerateTable tabeName='FILES' entries={magnetList} /> 
+          <hr className='dwt-tw-bg-[#3f4147] dwt-tw-h-px dwt-tw-border-0' />
+          <GenerateTable tabeName='TRACKER' entries={trackerList} />
+        </div>
+        );
     }
 
   };
