@@ -4,25 +4,37 @@ import WebTorrent from './webtorrent/webtorrent.min.js'
 import styles from './tailwind/output.css'
 import GenerateTable from './table';
 import { SettingsTemplate, SettingsTemplateType } from './defaultSettings';
+import QuickSendButton from './quickSendButton';
 
 
 const plugin = class MyPlugin {
     meta: any;
     settings : SettingsTemplateType;
     client: typeof WebTorrent;
+    quickSendButton: QuickSendButton;
+
 
     constructor(pluginMetadata: any) {
       this.meta = pluginMetadata;
     }
   
     start() {
+      // Load Settings
       this.settings = Object.assign({}, SettingsTemplate, BdApi.Data.load("DiscordWebTorrent", "settings"));
+
+      // Load Tailwind Styles
       BdApi.DOM.addStyle(this.meta.name, styles);
+
+      this.quickSendButton = new QuickSendButton();
+      this.quickSendButton.initialize();
+
+      // Create WebTorrent instance
       this.client = new WebTorrent();
     }
   
     stop() {
       BdApi.DOM.removeStyle(this.meta.name);
+      this.quickSendButton.unload();
       BdApi.Data.save("DiscordWebTorrent", "settings", this.settings);
       // Cleanup when disabled
     }
