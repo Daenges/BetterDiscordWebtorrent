@@ -3,14 +3,18 @@
 import WebTorrent from './webtorrent/webtorrent.min.js'
 import styles from './tailwind/output.css'
 import GenerateTable from './table';
+//import Settings from './defaultSettings'
 
 
 const plugin = class MyPlugin {
     meta: any;
-    
+    settings = {
+
+    };   
 
     constructor(pluginMetadata: any) {
       this.meta = pluginMetadata;
+      this.settings = {};
     }
   
     start() {
@@ -36,10 +40,27 @@ const plugin = class MyPlugin {
       ]
 
       const trackerList = [
-        ["https://opentracker.eu"],
-        ["https://new.tracker.net"],
-        ["https://track.me"]
-      ]
+          ["udp://tracker.opentrackr.org:1337/announce"],
+          ["udp://open.tracker.cl:1337/announce"],
+          ["udp://tracker.auctor.tv:6969/announce"],
+          ["udp://opentracker.i2p.rocks:6969/announce"],
+          ["https://opentracker.i2p.rocks:443/announce"],
+          ["udp://open.demonii.com:1337/announce"],
+          ["udp://open.stealth.si:80/announce"],
+          ["udp://tracker.torrent.eu.org:451/announce"],
+          ["udp://tracker.moeking.me:6969/announce"],
+          ["udp://exodus.desync.com:6969/announce"],
+          ["udp://p4p.arenabg.com:1337/announce"],
+          ["udp://movies.zsw.ca:6969/announce"],
+          ["udp://explodie.org:6969/announce"],
+          ["https://tracker.tamersunion.org:443/announce"],
+          ["udp://tracker1.myporn.club:9337/announce"],
+          ["udp://tracker1.bt.moack.co.kr:80/announce"],
+          ["udp://tracker.tiny-vps.com:6969/announce"],
+          ["udp://tracker.theoks.net:6969/announce"],
+          ["udp://tracker.skyts.net:6969/announce"],
+          ["udp://tracker.cubonegro.lol:6969/announce"]
+        ];
 
       return ( 
         <div>
