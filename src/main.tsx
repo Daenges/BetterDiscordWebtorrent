@@ -38,7 +38,7 @@ const plugin = class MyPlugin {
         <div>
           <GenerateTable tabeName='FILES' entries={magnetList} /> 
           <hr className='dwt-tw-bg-[#3f4147] dwt-tw-h-px dwt-tw-border-0' />
-          <GenerateTable tabeName='TRACKER' entries={[this.settings.trackerList]} />
+          <GenerateTable tabeName='TRACKER' entries={this.settings.trackerList.map(str => [str])} />
         </div>
         );
     }
