@@ -3,7 +3,7 @@
 import WebTorrent from './webtorrent/webtorrent.min.js'
 import styles from './tailwind/output.css'
 import GenerateTable from './table';
-//import Settings from './defaultSettings'
+import { defaultTrackerList } from './trackerlist/trackers'
 
 
 const plugin = class MyPlugin {
@@ -39,34 +39,11 @@ const plugin = class MyPlugin {
         [".//fjffdkjldskjl/jjkl.torrent", "/var/bin/help.txt"]
       ]
 
-      const trackerList = [
-          ["udp://tracker.opentrackr.org:1337/announce"],
-          ["udp://open.tracker.cl:1337/announce"],
-          ["udp://tracker.auctor.tv:6969/announce"],
-          ["udp://opentracker.i2p.rocks:6969/announce"],
-          ["https://opentracker.i2p.rocks:443/announce"],
-          ["udp://open.demonii.com:1337/announce"],
-          ["udp://open.stealth.si:80/announce"],
-          ["udp://tracker.torrent.eu.org:451/announce"],
-          ["udp://tracker.moeking.me:6969/announce"],
-          ["udp://exodus.desync.com:6969/announce"],
-          ["udp://p4p.arenabg.com:1337/announce"],
-          ["udp://movies.zsw.ca:6969/announce"],
-          ["udp://explodie.org:6969/announce"],
-          ["https://tracker.tamersunion.org:443/announce"],
-          ["udp://tracker1.myporn.club:9337/announce"],
-          ["udp://tracker1.bt.moack.co.kr:80/announce"],
-          ["udp://tracker.tiny-vps.com:6969/announce"],
-          ["udp://tracker.theoks.net:6969/announce"],
-          ["udp://tracker.skyts.net:6969/announce"],
-          ["udp://tracker.cubonegro.lol:6969/announce"]
-        ];
-
       return ( 
         <div>
           <GenerateTable tabeName='FILES' entries={magnetList} /> 
           <hr className='dwt-tw-bg-[#3f4147] dwt-tw-h-px dwt-tw-border-0' />
-          <GenerateTable tabeName='TRACKER' entries={trackerList} />
+          <GenerateTable tabeName='TRACKER' entries={[defaultTrackerList]} />
         </div>
         );
     }
