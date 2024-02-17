@@ -1,5 +1,9 @@
 {
     "name": "DiscordWebTorrent",
+    "displayName": "DiscordWebTorrent",
+    "version": "0.0.1",
     "description": "Circumvent upload restrictions through modern p2p technology.",
-    "author": "Daenges"
+    "author": "Daenges",
+    "authorId": "316247974248185860",
+    "source": "https://github.com/Daenges/DiscordWebTorrent/"
   }
