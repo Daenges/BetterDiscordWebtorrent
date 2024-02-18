@@ -8,7 +8,7 @@ interface EmojiBox {
     }
 }
 
-export function AppendToEmojiBox(pluginName: string, elementToAppend: JSX.Element) {
+export function AddToEmojiBox(pluginName: string, elementToAdd: JSX.Element) {
     // Get the div containing Emoji and other buttons on the right of the chat bar
     const filter = BdApi.Webpack.Filters.byStrings("ChannelTextAreaButtons");
     const emojiDivObj = BdApi.Webpack.getModule(m => filter(m.type));
@@ -18,9 +18,9 @@ export function AppendToEmojiBox(pluginName: string, elementToAppend: JSX.Elemen
         pluginName, 
         emojiDivObj, 
         "type", 
-        // Element has list of childs, append new Element to it
+        // Element has list of childs, prepend new Element to it
         (thisObj, args, emojiBoxElement : EmojiBox) => {
-            emojiBoxElement.props.children.push(elementToAppend);
+            emojiBoxElement.props.children.unshift(elementToAdd);
             return emojiBoxElement;
         }
     );
