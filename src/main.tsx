@@ -26,7 +26,6 @@ const plugin = class MyPlugin {
       BdApi.DOM.addStyle(this.meta.name, styles);
 
       this.quickSendButton = new QuickSendButton();
-      this.quickSendButton.initialize();
 
       // Create WebTorrent instance
       this.client = new WebTorrent();
@@ -34,7 +33,7 @@ const plugin = class MyPlugin {
   
     stop() {
       BdApi.DOM.removeStyle(this.meta.name);
-      this.quickSendButton.unload();
+      BdApi.Patcher.unpatchAll("DiscordWebTorrent");
       BdApi.Data.save("DiscordWebTorrent", "settings", this.settings);
       // Cleanup when disabled
     }
