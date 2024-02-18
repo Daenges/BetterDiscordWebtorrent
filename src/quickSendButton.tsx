@@ -6,7 +6,10 @@ export default class QuickSendButton {
     sendButton: JSX.Element;
 
     constructor() {
-        this.sendButton = <div className="dwt-tw-bg-blue-500 ">HELO</div>;
+        this.sendButton = <button onClick={() => BdApi.UI.showConfirmationModal("Ist Mayonnaise auch ein Instrument?", <div>...</div>, {
+            confirmText: "Ja, aber nur Dienstags.",
+            cancelText: "Nein."
+        })} className="hover:dwt-tw-text-xl dwt-tw-text-lg dwt-tw-duration-100 dwt-tw-bg-transparent">🧲</button>;
         AddToEmojiBox("DiscordWebTorrent", this.sendButton); 
     }
 
