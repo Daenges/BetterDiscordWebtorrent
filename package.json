@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress --color && cp ./dist/DiscordWebTorrent.plugin.js /home/daenges/.var/app/com.discordapp.Discord/config/BetterDiscord/plugins/DiscordWebTorrent.plugin.js",
-    "tw": "npx tailwindcss -i ./src/tailwind/input.css -o ./src/tailwind/output.css --watch",
+    "build": "npm run tw && webpack --progress --color && cp ./dist/DiscordWebTorrent.plugin.js /home/daenges/.var/app/com.discordapp.Discord/config/BetterDiscord/plugins/DiscordWebTorrent.plugin.js",
+    "tw": "npx tailwindcss -i ./src/tailwind/input.css -o ./src/tailwind/output.css && echo $(tr -d '\n' < ./src/tailwind/output.css) > ./src/tailwind/output.css",
     "update-tracker": "echo \"export const defaultTrackerList = [\" > ./src/trackerlist/trackers.ts && curl -s https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt | grep -v '^$' | while IFS= read -r line; do echo \"'$line',\" >> ./src/trackerlist/trackers.ts; done && echo \"];\" >> ./src/trackerlist/trackers.ts",
-    "dev-env": "npm run update-tracker && npm run tw",
     "update-webtorrent": "curl -o ./src/webtorrent/webtorrent.min.js https://raw.githubusercontent.com/webtorrent/webtorrent/master/dist/webtorrent.min.js"
   },
   "repository": {
