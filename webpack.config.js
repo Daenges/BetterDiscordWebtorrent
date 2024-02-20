@@ -25,6 +25,10 @@ module.exports = {
       libraryExport: "default",
       compareBeforeEmit: false
     },
+    externals: {
+      fs: 'fs',
+      webtorrent: 'webtorrent'
+    },
     resolve: {
       extensions: [".js", ".css", ".jsx", ".tsx", ".ts"],
     },

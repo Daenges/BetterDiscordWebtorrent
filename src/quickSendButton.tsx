@@ -3,7 +3,7 @@
 import { DialogOpenResult } from "betterdiscord";
 import { AddToEmojiBox } from "./chatBar";
 import WebTorrent from './webtorrent/webtorrent.min.js'
-import * as fs from 'fs';
+import * as fs from 'fs'
 
 interface FileResult extends DialogOpenResult {
     filePaths: string[],
@@ -29,8 +29,9 @@ export default class QuickSendButton {
                     <div className="dwt-tw-bg-neutral-800 dwt-tw-font-bold dwt-tw-p-2 dwt-tw-overflow-x-auto dwt-tw-text-center dwt-tw-rounded-sm dwt-tw-text-rose-500">{result.filePaths[0]}</div>
                 </div>, 
                 {confirmText: "Share", onConfirm: () => {
-                    this.webtorrentInstance.seed(fs.readFileSync(result.filePaths[0]));
-                    console.log(this.webtorrentInstance);
+                    // Thanks to @yentis for pointing out this implementation. <3
+                    // @ts-ignore
+                    this.webtorrentInstance.seed(fs.readFileSync(result.filePaths[0], ''));
                 }});
             }
         });
