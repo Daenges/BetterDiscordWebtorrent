@@ -25,16 +25,16 @@ const plugin = class MyPlugin {
       // Load Tailwind Styles
       BdApi.DOM.addStyle(this.meta.name, styles);
 
-      this.quickSendButton = new QuickSendButton();
-
       // Create WebTorrent instance
       this.client = new WebTorrent();
+      this.quickSendButton = new QuickSendButton(this.client);
     }
   
     stop() {
       BdApi.DOM.removeStyle(this.meta.name);
       BdApi.Patcher.unpatchAll("DiscordWebTorrent");
       BdApi.Data.save("DiscordWebTorrent", "settings", this.settings);
+      this.client.destroy();
       // Cleanup when disabled
     }
 
