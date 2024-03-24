@@ -1,4 +1,4 @@
-import {defaultTrackerList} from './trackerlist/trackers'
+import {DefaultTrackerList} from './trackerlist/trackers'
 
 export interface SettingsTemplateType {
     trackerList: string[],
@@ -6,6 +6,6 @@ export interface SettingsTemplateType {
 }
 
 export const SettingsTemplate : SettingsTemplateType = {
-    trackerList: defaultTrackerList,
+    trackerList: DefaultTrackerList,
     torrentToFile: {}
 }

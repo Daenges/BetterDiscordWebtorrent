@@ -4,6 +4,7 @@ import { DialogOpenResult } from "betterdiscord";
 import { AddToEmojiBox } from "./chatBar";
 import WebTorrent from './webtorrent/webtorrent.min.js'
 import * as fs from 'fs'
+import { SettingsTemplateType } from "./defaultSettings";
 
 interface FileResult extends DialogOpenResult {
     filePaths: string[],
@@ -13,11 +14,13 @@ interface FileResult extends DialogOpenResult {
 export default class QuickSendButton {
     sendButton: JSX.Element;
     webtorrentInstance: typeof WebTorrent;
+    settings: SettingsTemplateType;
 
-    constructor(instance: typeof WebTorrent) {
+    constructor(instance: typeof WebTorrent, settingsObj: SettingsTemplateType) {
         this.sendButton = <button onClick={() => this.CreateNewTorrent()} className="hover:dwt-tw-text-xl dwt-tw-text-lg dwt-tw-duration-100 dwt-tw-bg-transparent">🧲</button>;
         AddToEmojiBox("DiscordWebTorrent", this.sendButton);
         this.webtorrentInstance = instance;
+        this.settings = settingsObj;
     }
 
     CreateNewTorrent() {
@@ -31,7 +34,8 @@ export default class QuickSendButton {
                 {confirmText: "Share", onConfirm: () => {
                     // Thanks to @yentis for pointing out this implementation. <3
                     // @ts-ignore
-                    this.webtorrentInstance.seed(fs.readFileSync(result.filePaths[0], ''));
+                    this.webtorrentInstance.seed(fs.readFileSync(result.filePaths[0], ''), {name: "superFile.png"});
+                    console.log(this.webtorrentInstance);
                 }});
             }
         });

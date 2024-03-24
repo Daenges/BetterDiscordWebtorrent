@@ -2,6 +2,7 @@
 
 import WebTorrent from './webtorrent/webtorrent.min.js'
 import styles from './tailwind/output.css'
+import { GetRandomTrackers } from './trackerlist/randomTrackers';
 import GenerateTable from './table';
 import { SettingsTemplate, SettingsTemplateType } from './defaultSettings';
 import QuickSendButton from './quickSendButton';
@@ -20,14 +21,29 @@ const plugin = class MyPlugin {
   
     start() {
       // Load Settings
-      this.settings = Object.assign({}, SettingsTemplate, BdApi.Data.load("DiscordWebTorrent", "settings"));
+      this.settings = Object.assign({}, SettingsTemplate);//, BdApi.Data.load("DiscordWebTorrent", "settings"));
 
       // Load Tailwind Styles
       BdApi.DOM.addStyle(this.meta.name, styles);
 
       // Create WebTorrent instance
-      this.client = new WebTorrent();
-      this.quickSendButton = new QuickSendButton(this.client);
+      this.client = new WebTorrent({
+        tracker: {
+          announce: GetRandomTrackers(7),
+          rtcConfig: {
+            iceServers: [
+              {
+                urls: ['stun:stun.l.google.com:19305', 'stun:stun1.l.google.com:19305']
+              }
+            ]
+          }
+        }
+      });
+      this.quickSendButton = new QuickSendButton(this.client, this.settings);
+
+      this.client.on('listening', () => {
+        console.log('WebTorrent client is listening on port', this.client.torrentPort);
+      });
     }
   
     stop() {
