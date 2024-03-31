@@ -10,7 +10,7 @@ interface EmojiBox {
 
 export function AddToEmojiBox(pluginName: string, elementToAdd: JSX.Element) {
     // Get the div containing Emoji and other buttons on the right of the chat bar
-    const filter = BdApi.Webpack.Filters.byStrings("ChannelTextAreaButtons");
+    const filter = BdApi.Webpack.Filters.byStrings(".default.isSubmitButtonEnabled", ".default.getActiveCommand");
     const emojiDivObj = BdApi.Webpack.getModule(m => filter(m.type));
 
     // Apply after div has been loaded
