@@ -28,6 +28,7 @@ const plugin = class MyPlugin {
 
       // Create WebTorrent instance
       this.client = new WebTorrent({
+        maxConns: 55,
         tracker: {
           announce: GetRandomTrackers(7),
           rtcConfig: {
@@ -37,10 +38,18 @@ const plugin = class MyPlugin {
               }
             ]
           }
-        }
+        },
+        dht: {},
+        lsd: true,
+        webSeeds: true,
+        utp: true,
+        downloadLimit: -1,
+        uploadLimit: -1,
+        torrentPort: 12345
       });
       this.quickSendButton = new QuickSendButton(this.client, this.settings);
 
+      console.log("WebRTC is " + (WebTorrent.WEBRTC_SUPPORT ? "supported" : "not supported"))
       this.client.on('listening', () => {
         console.log('WebTorrent client is listening on port', this.client.torrentPort);
       });

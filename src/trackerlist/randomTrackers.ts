@@ -1,13 +1,12 @@
 import { DefaultTrackerList } from "./trackers";
 
-export function GetRandomTrackers(amount: number) {
-    var returnArr: Array<String> = Array(amount)
+export function GetRandomTrackers(amount: number) : Array<String> {
+    var returnList : Array<String> = []
     var arrayCounter: number = Math.floor(Math.random() * DefaultTrackerList.length)
     
     for(var i = 0; i < amount; i++) {
-        returnArr[i] = DefaultTrackerList[arrayCounter];
-        arrayCounter = (arrayCounter++) % DefaultTrackerList.length;
+        returnList.push(DefaultTrackerList[(arrayCounter + i) % DefaultTrackerList.length]);
     }
 
-    return returnArr;
+    return returnList;
 }

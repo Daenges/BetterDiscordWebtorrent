@@ -5,6 +5,7 @@ import { AddToEmojiBox } from "./chatBar";
 import WebTorrent from './webtorrent/webtorrent.min.js'
 import * as fs from 'fs'
 import { SettingsTemplateType } from "./defaultSettings";
+import { GetRandomTrackers } from "./trackerlist/randomTrackers";
 
 interface FileResult extends DialogOpenResult {
     filePaths: string[],
@@ -32,9 +33,15 @@ export default class QuickSendButton {
                     <div className="dwt-tw-bg-neutral-800 dwt-tw-font-bold dwt-tw-p-2 dwt-tw-overflow-x-auto dwt-tw-text-center dwt-tw-rounded-sm dwt-tw-text-rose-500">{result.filePaths[0]}</div>
                 </div>, 
                 {confirmText: "Share", onConfirm: () => {
+
                     // Thanks to @yentis for pointing out this implementation. <3
                     // @ts-ignore
-                    this.webtorrentInstance.seed(fs.readFileSync(result.filePaths[0], ''), {name: "superFile.png"});
+                    this.webtorrentInstance.seed(fs.readFileSync(result.filePaths[0], ''), 
+                    {
+                        name: result.filePaths[0].split('\\').pop().split('/').pop(),
+                        private: false,
+                        //announceList: [GetRandomTrackers(7)]
+                    });
                     console.log(this.webtorrentInstance);
                 }});
             }
